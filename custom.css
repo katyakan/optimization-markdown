@@ -1,4 +1,9 @@
 :root {
+  /* 
+    Кастомные переменные для цветовой схемы и теней.
+    В Bootstrap нет прямого аналога для theme variables
+   
+  */
   --custom-primary: #5f7adb;
   --custom-secondary: #a2b2ee;
   --custom-accent: #7b8cdd;
@@ -9,6 +14,11 @@
 }
 
 @keyframes fadeIn {
+  /* 
+   Кастомная анимация появления. 
+    В Bootstrap нет встроенного fadeIn, 
+   
+  */
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -19,29 +29,53 @@
   }
 }
 .fade-in {
-  animation: fadeIn 0.5s ease-out forwards;
+  /* 
+    Применение кастомной анимации для эффектного появления.
+  такого нет из коробки.
+  */
+  animation: fadeIn 0.5s ease-in-out forwards;
 }
 
-
 .browser-tab {
+  /* 
+    Кастомная стилизация кнопок/вкладок, 
+    т.к. у нас специфический вид (цвета, поднимается при hover).
+  
+  */
+  -webkit-font-smoothing: antialiased;
+  will-change: transform;
   background: var(--custom-light-bg);
   color: var(--custom-text);
   transition: var(--custom-transition);
   cursor: pointer;
   white-space: nowrap;
-
 }
 .browser-tab:hover {
+  /* 
+    Плавное приподнятие + тень при hover - 
+    это не предоставляется напрямую Bootstrap
+    */
   background: var(--custom-secondary);
   color: var(--custom-text);
+  transition: var(--custom-transition);
   transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 .browser-tab.active {
+  /*
+    Стиль для активной вкладки, Bootstrap не знает,
+    какой вариант ховера 
+  */
   background: var(--custom-primary);
   color: #fff;
   box-shadow: var(--custom-shadow);
 }
 .browser-tab.active::after {
+  /*
+    Кастомное оформление активной вкладки (полоса снизу).
+    Нет готового аналога в Bootstrap, 
+    делаем через псевдоэлемент.
+  */
   content: "";
   position: absolute;
   bottom: 0;
@@ -53,30 +87,30 @@
   border-radius: 3px 3px 0 0;
 }
 
-
 .step-title {
+  /*
+    Заголовок с цветом и нижней границей, 
+    у Bootstrap нет такой конкретной стилизации. 
+
+  */
   color: var(--custom-primary);
   border-bottom: 2px solid var(--custom-primary);
 }
 
-/* 
-.faq-item {
-   height: 180px;
-}
-
-.step-description .custom-card {
-   height: 240px;
-}
-*/
-
-/* Оставляем ховер-карточек, если оно нужно */
 .card:hover {
+  /*
+    Эффект приподнятия карточек при ховере.
+    Bootstrap .card не имеет встроенного hover-scaling,
+   */
   transform: translateY(-5px);
   transition: var(--custom-transition);
 }
 
-
 .icon-list li i {
+  /*
+    Отдельная стилизация для иконок (цвет, ширина).
+    В Bootstrap нет точной утилиты .width-25px
+  */
   color: var(--custom-primary);
   width: 25px;
 }
